@@ -18,7 +18,7 @@
             return [
                 "view" => VIEW_DIR."forum/listSujets.php",
                 "data" => [
-                    "sujets" => $sujetManager->findAll(["dateCreationSujet", "DESC"])
+                    "sujets" => $sujetManager->findAll(["dateCreationSujet", "ASC"])
                 ]
             ];
         
@@ -36,7 +36,19 @@
             ];
         }
 
+        public function listSujetsCategorie($id){
 
-        
+            // Demander à model l'accès à une fonction perso find topics by category
+            $sujetsCategorieManager = new SujetManager();
+            $sujetsCategorie = $sujetsCategorieManager->getSujetsByCategorie($id);
+
+            return [
+                "view" => VIEW_DIR."forum/listSujetsCategorie.php",
+                "data" => [
+                    "sujets" => $sujetsCategorie
+                ]
+            ];
+
+        }
 
     }

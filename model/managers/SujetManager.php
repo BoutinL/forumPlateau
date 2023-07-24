@@ -15,5 +15,16 @@
             parent::connect();
         }
 
+        public function getSujetsByCategorie($id){
+            $pdo = parent::connect();
+            $requeteListeSujetsCategorie = $pdo->prepare("
+                SELECT * 
+                FROM sujet s 
+                WHERE s.categorie_id = :id
+                ORDER BY s.dateCreationSujet ASC
+            ");
 
+            $requeteListeSujetsCategorie->execute(["id" => $id]);
+            require "view/forum/listSujetsCategorie.php";
+        }
     }
