@@ -6,10 +6,11 @@
     final class Sujet extends Entity{
 
         private $id;
-        private $title;
-        private $user;
-        private $creationdate;
-        private $closed;
+        private $titreSujet;
+        private $utilisateur_id;
+        private $dateCreationSujet;
+        private $categorie_id;
+        private $verouillerSujet;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -36,71 +37,102 @@
         }
 
         /**
-         * Get the value of title
+         * Get the value of titreSujet
          */ 
-        public function getTitle()
+        public function getTitreSujet()
         {
-                return $this->title;
+                return $this->titreSujet;
         }
 
         /**
-         * Set the value of title
+         * Set the value of titreSujet
          *
          * @return  self
          */ 
-        public function setTitle($title)
+        public function setTitreSujet($titreSujet)
         {
-                $this->title = $title;
+                $this->titreSujet = $titreSujet;
 
                 return $this;
         }
 
         /**
-         * Get the value of user
+         * Get the value of utilisateur_id
          */ 
-        public function getUser()
+        public function getUtilisateur_id()
         {
-                return $this->user;
+                return $this->utilisateur_id;
         }
 
         /**
-         * Set the value of user
+         * Set the value of utilisateur_id
          *
          * @return  self
          */ 
-        public function setUser($user)
+        public function setUtilisateur_id($utilisateur_id)
         {
-                $this->user = $user;
+                $this->utilisateur_id = $utilisateur_id;
 
                 return $this;
         }
 
-        public function getCreationdate(){
-            $formattedDate = $this->creationdate->format("d/m/Y, H:i:s");
-            return $formattedDate;
-        }
-
-        public function setCreationdate($date){
-            $this->creationdate = new \DateTime($date);
-            return $this;
-        }
-
         /**
-         * Get the value of closed
+         * Get the value of dateCreationSujet
          */ 
-        public function getClosed()
+        public function getDateCreationSujet()
         {
-                return $this->closed;
+                $formattedDate = $this->dateCreationSujet->format("d/m/Y, H:i:s");
+                return $formattedDate;
         }
 
         /**
-         * Set the value of closed
+         * Set the value of dateCreationSujet
          *
          * @return  self
          */ 
-        public function setClosed($closed)
+        public function setDateCreationSujet($date)
         {
-                $this->closed = $closed;
+                $this->dateCreationSujet = new \DateTime($date);
+
+                return $this;
+        }
+
+        /**
+         * Get the value of categorie_id
+         */ 
+        public function getCategorie_id()
+        {
+                return $this->categorie_id;
+        }
+
+        /**
+         * Set the value of categorie_id
+         *
+         * @return  self
+         */ 
+        public function setCategorie_id($categorie_id)
+        {
+                $this->categorie_id = $categorie_id;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of verouillerSujet
+         */ 
+        public function getVerouillerSujet()
+        {
+                return $this->verouillerSujet;
+        }
+
+        /**
+         * Set the value of verouillerSujet
+         *
+         * @return  self
+         */ 
+        public function setVerouillerSujet($verouillerSujet)
+        {
+                $this->verouillerSujet = $verouillerSujet;
 
                 return $this;
         }
