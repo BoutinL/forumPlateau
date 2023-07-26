@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Hôte:                         127.0.0.1
--- Version du serveur:           8.0.30 - MySQL Community Server - GPL
+-- Version du serveur:           5.7.33 - MySQL Community Server (GPL)
 -- SE du serveur:                Win64
--- HeidiSQL Version:             12.1.0.6537
+-- HeidiSQL Version:             12.4.0.6659
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,12 +16,12 @@
 
 
 -- Listage de la structure de la base pour forum_loic
-CREATE DATABASE IF NOT EXISTS `forum_loic` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `forum_loic` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `forum_loic`;
 
--- Listage de la structure de table forum_loic. categorie
+-- Listage de la structure de la table forum_loic. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
-  `id_categorie` int NOT NULL AUTO_INCREMENT,
+  `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `typeCategorie` varchar(50) NOT NULL,
   PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -31,33 +31,35 @@ INSERT INTO `categorie` (`id_categorie`, `typeCategorie`) VALUES
 	(1, 'Jardinage'),
 	(2, 'Développement');
 
--- Listage de la structure de table forum_loic. message
+-- Listage de la structure de la table forum_loic. message
 CREATE TABLE IF NOT EXISTS `message` (
-  `id_message` int NOT NULL AUTO_INCREMENT,
+  `id_message` int(11) NOT NULL AUTO_INCREMENT,
   `texteMessage` text NOT NULL,
   `dateCreationMessage` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sujet_id` int NOT NULL,
-  `utilisateur_id` int NOT NULL,
+  `sujet_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) NOT NULL,
   PRIMARY KEY (`id_message`),
   KEY `FK-message_sujet` (`sujet_id`),
   KEY `FK-message_utilisateur` (`utilisateur_id`),
   CONSTRAINT `FK-message_sujet` FOREIGN KEY (`sujet_id`) REFERENCES `sujet` (`id_sujet`),
   CONSTRAINT `FK-message_utilisateur` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forum_loic.message : ~2 rows (environ)
+-- Listage des données de la table forum_loic.message : ~4 rows (environ)
 INSERT INTO `message` (`id_message`, `texteMessage`, `dateCreationMessage`, `sujet_id`, `utilisateur_id`) VALUES
 	(1, 'SQL.sh', '2023-07-24 13:30:40', 1, 2),
-	(2, 'Arrose la.', '2023-07-24 14:19:36', 2, 1);
+	(2, 'Arrose la.', '2023-07-24 14:19:36', 2, 1),
+	(3, 'La pratique !', '2023-07-26 16:02:57', 1, 2),
+	(4, 'SELECT', '2023-07-26 16:03:43', 1, 1);
 
--- Listage de la structure de table forum_loic. sujet
+-- Listage de la structure de la table forum_loic. sujet
 CREATE TABLE IF NOT EXISTS `sujet` (
-  `id_sujet` int NOT NULL AUTO_INCREMENT,
+  `id_sujet` int(11) NOT NULL AUTO_INCREMENT,
   `titreSujet` varchar(50) NOT NULL,
   `dateCreationSujet` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `VerrouillerSujet` tinyint DEFAULT '0',
-  `categorie_id` int NOT NULL,
-  `utilisateur_id` int NOT NULL,
+  `VerrouillerSujet` tinyint(4) DEFAULT '0',
+  `categorie_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) NOT NULL,
   PRIMARY KEY (`id_sujet`),
   KEY `id_categorie` (`categorie_id`),
   KEY `FK-sujet_utilisateur` (`utilisateur_id`),
@@ -72,9 +74,9 @@ INSERT INTO `sujet` (`id_sujet`, `titreSujet`, `dateCreationSujet`, `Verrouiller
 	(3, 'Meilleur framework ?', '2023-07-24 15:41:07', 0, 2, 1),
 	(4, 'Ma plante se meurt', '2023-07-24 15:41:33', 0, 1, 2);
 
--- Listage de la structure de table forum_loic. utilisateur
+-- Listage de la structure de la table forum_loic. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
   `mailUtilisateur` varchar(50) NOT NULL,
   `pseudoUtilisateur` varchar(50) NOT NULL,
   `mdpUtilisateur` varchar(255) NOT NULL,

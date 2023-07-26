@@ -1,7 +1,5 @@
 <?php
-
-$sujets = $result["data"]['sujets'];
-    
+    $sujets = $result["data"]['sujets'];  
 ?>
 
 <h1>liste sujets</h1>
@@ -10,7 +8,12 @@ $sujets = $result["data"]['sujets'];
 foreach($sujets as $sujet ){
 
     ?>
-    <p><?=$sujet->getTitreSujet()?></p>
+    <p>
+        <a href="index.php?ctrl=forum&action=listMessages&id=<?= $sujet->getId() ?>">
+            <?=$sujet->getTitreSujet()?>
+        </a>
+        <?=" Utilisateur: ".$sujet->getUtilisateur()." Date/Heure: ".$sujet->getDateCreationSujet() ?>
+    </p>
     <?php
 }
 

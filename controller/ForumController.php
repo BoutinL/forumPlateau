@@ -5,9 +5,9 @@
     use App\Session;
     use App\AbstractController;
     use App\ControllerInterface;
-    use Model\Managers\SujetManager;
-    use Model\Managers\MessageManager;
-    use Model\Managers\CategorieManager;
+        use Model\Managers\SujetManager;
+        use Model\Managers\MessageManager;
+        use Model\Managers\CategorieManager;
     
     class ForumController extends AbstractController implements ControllerInterface{
 
