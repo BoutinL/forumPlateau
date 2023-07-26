@@ -16,7 +16,7 @@
 
         public function getSujetsByCategorie($id){
 
-            $sql = "SELECT * 
+            $sql = "SELECT s.titreSujet, s.dateCreationSujet, s.utilisateur_id
                     FROM " .$this->tableName. " s
                     WHERE s.categorie_id = :id
                     ORDER BY s.dateCreationSujet ASC";

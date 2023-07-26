@@ -7,9 +7,9 @@
 
         private $id;
         private $titreSujet;
-        private $utilisateur_id;
+        private $utilisateur;
         private $dateCreationSujet;
-        private $categorie_id;
+        private $categorie;
         private $verouillerSujet;
 
         public function __construct($data){         
@@ -59,9 +59,9 @@
         /**
          * Get the value of utilisateur_id
          */ 
-        public function getUtilisateur_id()
+        public function getUtilisateur()
         {
-                return $this->utilisateur_id;
+                return $this->utilisateur;
         }
 
         /**
@@ -69,9 +69,9 @@
          *
          * @return  self
          */ 
-        public function setUtilisateur_id($utilisateur_id)
+        public function setUtilisateur($utilisateur)
         {
-                $this->utilisateur_id = $utilisateur_id;
+                $this->utilisateur = $utilisateur;
 
                 return $this;
         }
