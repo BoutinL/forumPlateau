@@ -35,20 +35,20 @@
                 ]
             ];
         }
-
+        
         public function listSujetsCategorie($id){
-
-            // Demander à model l'accès à une fonction perso find topics by category
-            $sujetsCategorieManager = new SujetManager();
-            $sujetsCategorie = $sujetsCategorieManager->getSujetsByCategorie($id);
-
+            $categorieManager = new CategorieManager();
+            $sujetManager = new SujetManager();
+    
+            $categorie = $categorieManager->findOneById($id);
+            $sujets = $sujetManager->getSujetsByCategorie($id); 
+    
             return [
-                "view" => VIEW_DIR."forum/listSujetsCategorie.php",
+                "view" => VIEW_DIR . "forum/listSujetsCategorie.php",
                 "data" => [
-                    "sujets" => $sujetsCategorie
+                    "categorie" => $categorie,
+                    "sujets" => $sujets
                 ]
             ];
-
         }
-
     }

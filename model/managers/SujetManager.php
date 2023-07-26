@@ -10,21 +10,21 @@
         protected $className = "Model\Entities\Sujet";
         protected $tableName = "sujet";
 
-
         public function __construct(){
             parent::connect();
         }
 
         public function getSujetsByCategorie($id){
-            $pdo = parent::connect();
-            $requeteListeSujetsCategorie = $pdo->prepare("
-                SELECT * 
-                FROM sujet s 
-                WHERE s.categorie_id = :id
-                ORDER BY s.dateCreationSujet ASC
-            ");
 
-            $requeteListeSujetsCategorie->execute(["id" => $id]);
-            require "view/forum/listSujetsCategorie.php";
+            $sql = "SELECT * 
+                    FROM " .$this->tableName. " s
+                    WHERE s.categorie_id = :id
+                    ORDER BY s.dateCreationSujet ASC";
+
+            return $this->getMultipleResults(
+                DAO::select($sql, ["id"=>$id]), 
+                $this->className
+            );
+
         }
     }
