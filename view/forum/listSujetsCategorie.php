@@ -8,9 +8,11 @@
 foreach($sujets as $sujet){
 
     ?>
-    <p><?=$sujet->getTitreSujet()." Utilisateur: ".$sujet->getUtilisateur()." Date/Heure: ".$sujet->getDateCreationSujet() ?></p>
+    <p>
+        <a href="index.php?ctrl=forum&action=listMessages&id=<?=$sujet->getId()?>">
+            <?=$sujet->getTitreSujet()?>
+        </a>
+        <?=" Utilisateur: ".$sujet->getUtilisateur()." Date/Heure: ".$sujet->getDateCreationSujet() ?>
+    </p>
     <?php
 }
-
-
-  

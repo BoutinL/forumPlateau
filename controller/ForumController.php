@@ -36,7 +36,8 @@
             ];
         }
         
-        public function listSujetsCategorie($id){
+        public function listSujetsCategorie($id)
+        {
             $categorieManager = new CategorieManager();
             $sujetManager = new SujetManager();
     
@@ -51,4 +52,22 @@
                 ]
             ];
         }
+
+        public function listMessages($id)
+        {
+            $sujetManager = new SujetManager();
+            $messageManager = new MessageManager();
+
+            $sujet = $sujetManager->findOneById($id);
+            $messages = $messageManager->getMessagesBySujet($id);
+
+            return [
+                "view" => VIEW_DIR . "forum/listMessages.php",
+                "data" => [
+                    "sujet" => $sujet,
+                    "messages" => $messages
+                ]
+            ];
+        }   
+
     }

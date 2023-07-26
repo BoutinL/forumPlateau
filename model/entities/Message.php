@@ -9,7 +9,7 @@
         private $texteMessage;
         private $dateCreationMessage;
         private $sujet_id;
-        private $utilisateur_id;
+        private $utilisateur;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -97,21 +97,21 @@
         }
 
         /**
-         * Get the value of utilisateur_id
+         * Get the value of utilisateur
          */ 
-        public function getUtilisateur_id()
+        public function getUtilisateur()
         {
-                return $this->utilisateur_id;
+                return $this->utilisateur;
         }
 
         /**
-         * Set the value of utilisateur_id
+         * Set the value of utilisateur
          *
          * @return  self
          */ 
-        public function setUtilisateur_id($utilisateur_id)
+        public function setUtilisateur($utilisateur)
         {
-                $this->utilisateur_id = $utilisateur_id;
+                $this->utilisateur = $utilisateur;
 
                 return $this;
         }
