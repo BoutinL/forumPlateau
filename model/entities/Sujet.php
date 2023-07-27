@@ -9,8 +9,8 @@
         private $titreSujet;
         private $utilisateur;
         private $dateCreationSujet;
-        private $categorie;
-        private $verouillerSujet;
+        private $categorie_id;
+        private $verrouillerSujet;
 
         public function __construct($data){         
             $this->hydrate($data);        
@@ -118,21 +118,21 @@
         }
 
         /**
-         * Get the value of verouillerSujet
+         * Get the value of verrouillerSujet
          */ 
-        public function getVerouillerSujet()
+        public function getVerrouillerSujet()
         {
-                return $this->verouillerSujet;
+                return $this->verrouillerSujet;
         }
 
         /**
-         * Set the value of verouillerSujet
+         * Set the value of verrouillerSujet
          *
          * @return  self
          */ 
-        public function setVerouillerSujet($verouillerSujet)
+        public function setVerrouillerSujet($verrouillerSujet)
         {
-                $this->verouillerSujet = $verouillerSujet;
+                $this->verrouillerSujet = $verrouillerSujet;
 
                 return $this;
         }

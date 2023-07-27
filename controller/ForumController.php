@@ -103,4 +103,13 @@
                 }
             }
         }
+
+        public function deleteSujet($id)
+        {
+            $sujetManager = new sujetManager;
+            $sujet = $sujetManager->findOneById($id);
+
+            $sujetManager->delete($id);
+            $this->redirectTo('forum', 'listSujetsCategorie', $sujet->getCategorie_id());
+        }
     }

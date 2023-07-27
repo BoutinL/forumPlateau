@@ -13,6 +13,7 @@ foreach($sujets as $sujet ){
             <?=$sujet->getTitreSujet()?>
         </a>
         <?=" Utilisateur: ".$sujet->getUtilisateur()." Date/Heure: ".$sujet->getDateCreationSujet() ?>
+        <a href="index.php?ctrl=forum&action=deleteSujet&id=<?= $sujet->getId() ?>">Effacer</a>
     </p>
     <?php
 }
