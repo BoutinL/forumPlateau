@@ -25,7 +25,16 @@
                 DAO::select($sql, ["id"=>$id]), 
                 $this->className
             );
-
         }
 
+        public function addSujet()
+        {
+            $sql = "INSERT INTO sujet (titreSujet, categorie_id, utilisateur_id )
+                    VALUES ('Faire un insert en SQL depuis un framework', '2', '1')";
+            
+            return $this->insert(
+                DAO::select($sql),
+                $this->className
+            );
+        }
     }

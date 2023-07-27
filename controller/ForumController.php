@@ -68,6 +68,42 @@
                     "messages" => $messages
                 ]
             ];
-        }   
+        }
+        
+        public function addSujet($id)
+        {
+            $sujetManager = new SujetManager();
+            $messageManager = new MessageManager();
 
+            if(isset($_POST['submit']))
+            {
+                if (isset($_POST['titre']) && (!empty($_POST['titre'])))
+                {
+                    $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $utilisateur_id = 1;
+
+                    if($titre && $message && $utilisateur_id)
+                    {
+                        $nouveauSujetId = $sujetManager->add([
+                            "titreSujet" => $titre,
+                            "dateCreationSujet" => date('d-m-y h:i:s'),
+                            "utilisateur_id" => $utilisateur_id,
+                            "verrouillerSujet" => "0",
+                            "categorie_id" => $id
+                        ]);
+
+                        $messageManager->add([
+                            "texteMessage" => $message,
+                            "dateCreationMessage" => date('d-m-y h:i:s'),
+                            "sujet_id" => $nouveauSujetId,
+                            "utilisateur_id" => $utilisateur_id
+                        ]);
+                    }
+
+                    header("Location:index.php?ctrl=forum&action=listSujetsCategorie&id=$id");
+                    exit;
+                }
+            }
+        }
     }
