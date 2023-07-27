@@ -13,7 +13,7 @@
 
         public function index(){
 
-           $sujetManager = new SujetManager();
+            $sujetManager = new SujetManager();
 
             return [
                 "view" => VIEW_DIR."forum/listSujets.php",
@@ -87,15 +87,12 @@
                     {
                         $nouveauSujetId = $sujetManager->add([
                             "titreSujet" => $titre,
-                            "dateCreationSujet" => date('d-m-y h:i:s'),
                             "utilisateur_id" => $utilisateur_id,
-                            "verrouillerSujet" => "0",
                             "categorie_id" => $id
                         ]);
 
                         $messageManager->add([
                             "texteMessage" => $message,
-                            "dateCreationMessage" => date('d-m-y h:i:s'),
                             "sujet_id" => $nouveauSujetId,
                             "utilisateur_id" => $utilisateur_id
                         ]);
