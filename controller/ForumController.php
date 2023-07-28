@@ -104,6 +104,34 @@
             }
         }
 
+        public function addMessage($id)
+        {
+            $sujetManager = new SujetManager();
+            $messageManager = new MessageManager();
+
+            if(isset($_POST['submit']))
+            {
+                if (isset($_POST['message']))
+                {
+                    $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $utilisateur_id = 1;
+
+                    if($message && $utilisateur_id)
+                    {
+                        $sujetId = $sujetManager->findOneById($id);
+                        $messageManager->add([
+                            "texteMessage" => $message,
+                            "sujet_id" => $sujetId,
+                            "utilisateur_id" => $utilisateur_id
+                        ]);
+                    }
+
+                    header("Location:index.php?ctrl=forum&action=listMessages&id=$id");
+                    exit;
+                }
+            }
+        }
+
         public function deleteSujet($id)
         {
             $sujetManager = new sujetManager;

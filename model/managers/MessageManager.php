@@ -29,4 +29,15 @@
                 $this->className
             );
         }
+
+        public function addMessage()
+        {
+            $sql = "INSERT INTO message (texteMessage, sujet_id, utilisateur_id )
+                    VALUES ('Test réponse', '2', '1')";
+            
+            return $this->insert(
+                DAO::select($sql),
+                $this->className
+            );
+        }
     }
