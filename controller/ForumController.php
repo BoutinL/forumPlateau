@@ -118,7 +118,7 @@
 
                     if($message && $utilisateur_id)
                     {
-                        $sujetId = $sujetManager->findOneById($id);
+                        $sujetId = $sujetManager->findOneById($id)->getId();
                         $messageManager->add([
                             "texteMessage" => $message,
                             "sujet_id" => $sujetId,
