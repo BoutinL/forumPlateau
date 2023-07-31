@@ -9,7 +9,7 @@
     <input type="email" name="mail" id="mail" required></br>
 
     <label>Mot de passe:</label></br>
-    <textarea type="password" name="mdp" id="message" required></textarea></br>
+    <input type="password" name="mdp" id="mdp" required></input></br>
 
     <input type="submit" name="submit" value="Se connecter">
 </form>
